@@ -1,0 +1,25 @@
+.DS_Store
+
+# Flutter / Dart build output
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.pub-cache/
+**/.pub/
+**/build/
+
+# IDE
+**/.idea/
+**/*.iml
+
+# Android / iOS local and signing files
+**/.gradle/
+**/local.properties
+**/key.properties
+**/*.jks
+**/*.keystore
+**/ios/Pods/
+**/android/app/debug
+**/android/app/profile
+**/android/app/release
+*.apk
