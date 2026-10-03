@@ -9,67 +9,63 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Praktikum 1',
-      home: CounterPage(),
-    );
-  }
-}
-
-class CounterPage extends StatefulWidget {
-  const CounterPage({super.key});
-
-  @override
-  State<CounterPage> createState() => _CounterPageState();
-}
-
-class _CounterPageState extends State<CounterPage> {
-  int _count = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.red,
-        title: const Text(
-          'Hello Flutter',
-          style: TextStyle(color: Colors.white),
+    return MaterialApp(
+      title: 'Kartu Perkenalan',
+      home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.red,
+          title: const Text(
+            'Kartu Perkenalan',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
         ),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(
-              Icons.flutter_dash,
-              size: 80,
-              color: Colors.blue,
-            ),
-            const SizedBox(height: 16),
-            const Text(
-              'Halo, nama saya [Habiburrahman]!',
-              style: TextStyle(
-                fontSize: 24,
-                color: Colors.red,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              CircleAvatar(
+                radius: 40,
+                backgroundColor: Colors.transparent,
+                child: Icon(
+                  Icons.face,
+                  size: 80,
+                  color: Colors.red,
+                ),
               ),
-            ),
-            const Text(
-              'NIM: [20240801149]',
-              style: TextStyle(color: Colors.red),
-            ),
-            Text(
-              '$_count',
-              style: const TextStyle(
-                fontSize: 48,
-                color: Colors.red,
+              SizedBox(height: 16),
+              Text(
+                'Habiburrahman Ikwan',
+                style: TextStyle(
+                  fontSize: 24,
+                  color: Colors.red,
+                ),
               ),
-            ),
-          ],
+              Text(
+                'NIM: 20240801149',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.red,
+                ),
+              ),
+              Text(
+                'Jurusan: Teknik Informatika',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.red,
+                ),
+              ),
+              Text(
+                'Hobi: Main Layangan',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.red,
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => setState(() => _count++),
-        child: const Icon(Icons.add),
       ),
     );
   }

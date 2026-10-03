@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
               ),
               SizedBox(height: 16),
               Text(
-                'Nama: [Habiburrahman]',
+                'Nama: Habiburrahman',
                 style: TextStyle(
                   fontSize: 24,
                   color: Colors.red,
@@ -38,21 +38,21 @@ class MyApp extends StatelessWidget {
               ),
               SizedBox(height: 8),
               Text(
-                'NIM: [20240801149]',
+                'NIM: 20240801149',
                 style: TextStyle(
                   color: Colors.red,
                 ),
               ),
               SizedBox(height: 8),
               Text(
-                'Jurusan: [JURUSAN]',
+                'Jurusan: Teknik Informatika',
                 style: TextStyle(
                   color: Colors.red,
                 ),
               ),
               SizedBox(height: 8),
               Text(
-                'Hobi: [Main layangan]',
+                'Hobi: Main layangan',
                 style: TextStyle(
                   color: Colors.red,
                 ),
