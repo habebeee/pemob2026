@@ -1,118 +1,91 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
-
-class Makanan {
-  final String nama;
-  final int harga;
-
-  const Makanan(this.nama, this.harga);
+void main() {
+  runApp(const MyApp());
 }
-
-const daftarMenu = [
-  Makanan('Nasi Goreng', 15000),
-  Makanan('Mie Ayam', 12000),
-  Makanan('Es Teh', 4000),
-  Makanan('Ayam Bakar', 20000),
-  Makanan('Bakso', 13000),
-  Makanan('Soto Ayam', 14000),
-  Makanan('Es Jeruk', 5000),
-];
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Praktikum 2',
-      theme: ThemeData(
-        colorSchemeSeed: Colors.blue,
-        useMaterial3: true,
-      ),
-      home: const MenuPage(),
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: ProfilePage(),
     );
   }
 }
 
-class MenuPage extends StatelessWidget {
-  const MenuPage({super.key});
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Daftar Menu'),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: const Text(
+          'Profil',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 24,
+          ),
+        ),
       ),
-      body: ListView.builder(
-        itemCount: daftarMenu.length,
-        itemBuilder: (context, index) {
-          final item = daftarMenu[index];
-
-          return Card(
-            margin: const EdgeInsets.symmetric(
-              horizontal: 12,
-              vertical: 6,
-            ),
-            child: ListTile(
-              leading: const Icon(Icons.restaurant),
-              title: Text(item.nama),
-              subtitle: Text('Rp ${item.harga}'),
-              trailing: const Icon(Icons.chevron_right),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => DetailPage(
-                      makanan: item,
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Container(
+          width: double.infinity,
+          height: 650,
+          decoration: BoxDecoration(
+            color: Colors.lightBlue.shade50,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Stack(
+            children: [
+              const Positioned(
+                top: 20,
+                left: 95,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Habiburrahman',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
-                  ),
-                );
-              },
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
-
-class DetailPage extends StatelessWidget {
-  final Makanan makanan;
-
-  const DetailPage({
-    super.key,
-    required this.makanan,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(makanan.nama),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(
-              Icons.restaurant_menu,
-              size: 80,
-            ),
-            const SizedBox(height: 16),
-            Text(
-              makanan.nama,
-              style: const TextStyle(
-                fontSize: 24,
+                    SizedBox(height: 4),
+                    Text(
+                      '20240801149',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Text('Rp ${makanan.harga}'),
-            const SizedBox(height: 24),
-            ElevatedButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('Kembali'),
-            ),
-          ],
+
+              Positioned(
+                top: 340,
+                left: 16,
+                child: CircleAvatar(
+                  radius: 32,
+                  backgroundColor: Colors.blue.shade100,
+                  child: Icon(
+                    Icons.person,
+                    size: 32,
+                    color: Colors.blue.shade900,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
