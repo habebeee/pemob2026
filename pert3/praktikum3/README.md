@@ -1,16 +1,25 @@
 # praktikum3
 
-A new Flutter project.
+Praktikum Flutter Fundamental Pertemuan 3: input, form validasi, dan daftar tugas dengan Provider.
 
-## Getting Started
+Laporan lengkap ada di [readme pertemuan 3](../readme.md).
 
-This project is a starting point for a Flutter application.
+Jalankan tiap bagian dengan target file:
 
-A few resources to get you started if this is your first Flutter project:
+```bash
+flutter run -t lib/bagian_A_B.dart
+flutter run -t lib/bagianD.dart
+flutter run -t lib/latihan1.dart
+flutter run -t lib/latihan2.dart
+flutter run -t lib/latihan3.dart
+flutter run -t lib/latihan4.dart
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+| File | Isi |
+| --- | --- |
+| `lib/bagian_A_B.dart` | Input dasar dan form pendaftaran. `home` saat ini adalah `FormPage`. |
+| `lib/bagianD.dart` | Daftar tugas dengan `ChangeNotifier` dan Provider. |
+| `lib/latihan1.dart` | Validasi judul minimal 3 karakter. |
+| `lib/latihan2.dart` | Hapus semua tugas yang sudah selesai. |
+| `lib/latihan3.dart` | SnackBar `Tugas ditambahkan`. |
+| `lib/latihan4.dart` | Empty state `Belum ada tugas`. |
