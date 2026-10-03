@@ -1,16 +1,22 @@
 # tugas3
 
-A new Flutter project.
+Tugas Pertemuan 3: aplikasi Daftar Belanja.
 
-## Getting Started
+Laporan lengkap ada di [readme pertemuan 3](../readme.md).
 
-This project is a starting point for a Flutter application.
+State ada di `BelanjaModel` (`ChangeNotifier`) dan dibagikan dengan Provider. Halaman daftar memakai `context.watch()`, halaman tambah memakai `context.read()` setelah form lolos validasi.
 
-A few resources to get you started if this is your first Flutter project:
+```bash
+flutter run
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+File utama: `lib/main.dart`.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Validasi form:
+
+- Nama kosong menampilkan `Nama barang wajib diisi`.
+- Jumlah kosong menampilkan `Jumlah wajib diisi`.
+- Jumlah bukan angka, nol, atau negatif menampilkan `Jumlah harus angka lebih dari 0`.
+- Kategori kosong menampilkan `Kategori wajib dipilih`.
+
+AppBar menampilkan `Belum Dibeli` sesuai jumlah barang yang belum dicentang. Kategori yang tersedia: Makanan, Minuman, dan Lainnya.

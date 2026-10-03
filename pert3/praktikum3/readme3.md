@@ -1,61 +1,103 @@
-Praktikum Flutter Fundamental — Pertemuan 3
-Mata Kuliah: Pemrograman Mobile
-Praktikum: Flutter Fundamental
-Pertemuan: 3
-Nama: Habiburrahman
-NIM: 20240801149
+# Praktikum Flutter Fundamental — Pertemuan 3
+
+Mata Kuliah: Pemrograman Mobile  
+Praktikum: Flutter Fundamental  
+Pertemuan: 3  
+Nama: Habiburrahman Ikwan  
+NIM: 20240801149  
 Prodi: Teknik Informatika
 
-1. Ringkasan Praktikum
-Pada Pertemuan 3, fokus praktikum beralih pada pengolahan input pengguna, validasi form, serta pengelolaan data yang perlu digunakan oleh lebih dari satu halaman.
+## 1. Gambaran Umum
 
-Materi tidak lagi terbatas pada penyusunan antarmuka. Praktikum mulai membahas bagaimana data disimpan, diubah, dan dibagikan. Untuk state yang hanya berada pada satu halaman digunakan `setState`, sedangkan data yang digunakan lintas halaman dikelola menggunakan `ChangeNotifier` dan `Provider`.
+Pada praktikum pertemuan 3 ini saya mempelajari bagaimana cara menerima input dari pengguna, membuat form yang mempunyai validasi, dan mengatur data yang digunakan oleh lebih dari satu halaman.
+
+Materi pada pertemuan ini tidak hanya membahas tampilan Flutter, tetapi mulai masuk ke bagian bagaimana sebuah aplikasi menyimpan dan mengubah data. Pada bagian awal saya menggunakan `setState` untuk data yang masih berada di satu halaman. Setelah itu saya mencoba menggunakan `ChangeNotifier` dan `Provider` ketika data mulai digunakan oleh beberapa halaman.
 
 Praktikum ini terdiri dari beberapa tahap, yaitu:
 
-Input dasar menggunakan TextField.
-Form dengan validasi.
-Memahami alasan penggunaan state management.
-Membuat aplikasi daftar tugas menggunakan Provider.
-Mengerjakan latihan mandiri secara bertahap.
-Menerapkan konsep yang sama pada tugas akhir berupa aplikasi Daftar Belanja.
-Bagian terpenting dari praktikum ini adalah membedakan state lokal dengan state yang perlu dibagikan. Dengan memahami perbedaan tersebut, alur data antarhalaman menjadi lebih jelas dan penggunaan state management dapat diterapkan secara tepat.
+- Input dasar menggunakan `TextField`.
+- Form dengan validasi.
+- Memahami alasan penggunaan state management.
+- Membuat aplikasi daftar tugas menggunakan Provider.
+- Mengerjakan latihan mandiri secara bertahap.
+- Menerapkan konsep yang sama pada tugas akhir berupa aplikasi Daftar Belanja.
 
-2. Target Pembelajaran
-Target pembelajaran yang digunakan pada praktikum ini meliputi:
+Menurut saya, bagian yang paling penting dari praktikum ini adalah memahami perbedaan antara state lokal dan state yang perlu dibagikan. Jadi, kode yang dibuat bukan hanya untuk menghasilkan tampilan, tetapi juga untuk memahami bagaimana data bergerak dari satu halaman ke halaman lainnya.
 
-Mengambil input pengguna menggunakan TextField dan TextEditingController.
-Membuat form dengan Form, TextFormField, dropdown, dan checkbox.
-Memahami keterbatasan setState ketika data digunakan oleh beberapa halaman.
-Menerapkan state management dasar menggunakan ChangeNotifier dan Provider.
-Membedakan penggunaan context.watch() dan context.read().
-Seluruh target tersebut diterapkan secara bertahap melalui implementasi kode pada setiap bagian praktikum.
+## 2. Tujuan Praktikum
 
-3. Persiapan Lingkungan Pengembangan
-Tools yang digunakan
-Flutter SDK
-Visual Studio Code / editor
-Emulator atau perangkat untuk menjalankan aplikasi
-Dart
-Package provider
-Project Flutter dibuat dengan perintah:
+Berdasarkan modul, tujuan yang ingin dicapai pada praktikum ini adalah:
 
-flutter create praktikum_3
-Untuk menggunakan Provider, package ditambahkan melalui terminal:
+- Mengambil input pengguna menggunakan `TextField` dan `TextEditingController`.
+- Membuat form dengan `Form`, `TextFormField`, dropdown, dan checkbox.
+- Memahami keterbatasan `setState` ketika data digunakan oleh beberapa halaman.
+- Menerapkan state management dasar menggunakan `ChangeNotifier` dan `Provider`.
+- Membedakan penggunaan `context.watch()` dan `context.read()`.
 
-flutter pub add provider
-Setelah package berhasil ditambahkan, project dapat menggunakan:
+Tujuan tersebut kemudian saya terapkan secara bertahap melalui kode yang dibuat selama praktikum.
 
+## 3. Persiapan
+
+### Tools yang digunakan
+
+- Flutter SDK
+- Visual Studio Code / editor
+- Emulator atau perangkat untuk menjalankan aplikasi
+- Dart
+- Package `provider`
+
+Project praktikum berada di folder `praktikum3`, dan tugas akhir berada di folder `tugas3`. Package Provider sudah tercantum di kedua `pubspec.yaml` (`provider: ^6.1.5+1`).
+
+```dart
 import 'package:provider/provider.dart';
-4. Konsep Dasar yang Digunakan
-4.1 TextField dan TextEditingController
-TextField digunakan untuk menerima input berupa teks dari pengguna. Agar isi dari input tersebut dapat dibaca melalui kode, digunakan TextEditingController.
+```
+
+Project praktikum tidak memakai satu `lib/main.dart`. Setiap bagian dijalankan lewat file targetnya:
+
+```bash
+cd praktikum3
+flutter run -t lib/bagian_A_B.dart
+flutter run -t lib/bagianD.dart
+flutter run -t lib/latihan1.dart
+flutter run -t lib/latihan2.dart
+flutter run -t lib/latihan3.dart
+flutter run -t lib/latihan4.dart
+```
+
+Tugas daftar belanja dijalankan dari project terpisah:
+
+```bash
+cd tugas3
+flutter run
+```
+
+### Lokasi kode
+
+| Bagian | File |
+| --- | --- |
+| Bagian A dan B | `praktikum3/lib/bagian_A_B.dart` |
+| Bagian D — Daftar Tugas | `praktikum3/lib/bagianD.dart` |
+| Latihan 1 | `praktikum3/lib/latihan1.dart` |
+| Latihan 2 | `praktikum3/lib/latihan2.dart` |
+| Latihan 3 | `praktikum3/lib/latihan3.dart` |
+| Latihan 4 | `praktikum3/lib/latihan4.dart` |
+| Tugas — Daftar Belanja | `tugas3/lib/main.dart` |
+
+## 4. Pemahaman Materi
+
+### 4.1 TextField dan TextEditingController
+
+`TextField` digunakan untuk menerima input berupa teks dari pengguna. Agar isi dari input tersebut dapat dibaca melalui kode, digunakan `TextEditingController`.
 
 Contoh yang saya gunakan:
 
+```dart
 final _controller = TextEditingController();
-Controller kemudian dipasang pada TextField:
+```
 
+Controller kemudian dipasang pada `TextField`:
+
+```dart
 TextField(
   controller: _controller,
   decoration: const InputDecoration(
@@ -63,37 +105,56 @@ TextField(
     border: OutlineInputBorder(),
   ),
 )
+```
+
 Isi input dapat diambil menggunakan:
 
+```dart
 _controller.text
+```
+
 Karena controller menggunakan resource yang perlu dikelola, controller juga harus dilepas ketika widget sudah tidak digunakan:
 
+```dart
 @override
 void dispose() {
   _controller.dispose();
   super.dispose();
 }
-Dari implementasi ini dapat dipahami bahwa `TextEditingController` menjadi penghubung antara input pada antarmuka dan data yang dibaca oleh kode Dart.
+```
 
-4.2 Form dan Validasi
-Jika hanya satu input, TextField sudah cukup. Tetapi jika terdapat beberapa input yang harus diperiksa sebelum data diproses, digunakan Form.
+Dari bagian ini saya memahami bahwa `TextEditingController` berfungsi sebagai penghubung antara input pengguna dengan kode Dart.
+
+### 4.2 Form dan Validasi
+
+Jika hanya satu input, `TextField` sudah cukup. Tetapi jika terdapat beberapa input yang harus diperiksa sebelum data diproses, digunakan `Form`.
 
 Form diberikan sebuah key:
 
+```dart
 final _formKey = GlobalKey<FormState>();
-Kemudian key tersebut dipasang pada Form:
+```
 
+Kemudian key tersebut dipasang pada `Form`:
+
+```dart
 Form(
   key: _formKey,
   child: ...
 )
+```
+
 Validasi dijalankan dengan:
 
+```dart
 _formKey.currentState!.validate()
-Setiap TextFormField mempunyai validator. Jika input tidak sesuai, validator mengembalikan pesan error. Jika input benar, validator mengembalikan null.
+```
+
+Setiap `TextFormField` mempunyai validator. Jika input tidak sesuai, validator mengembalikan pesan error. Jika input benar, validator mengembalikan `null`.
 
 Contohnya:
 
+```dart
 validator: (v) {
   if (v == null || v.trim().isEmpty) {
     return 'Nama wajib diisi';
@@ -101,8 +162,11 @@ validator: (v) {
 
   return null;
 }
-Alur validasinya dapat diringkas sebagai berikut:
+```
 
+Jadi alurnya adalah:
+
+```text
 User mengisi form
         ↓
 Tombol ditekan
@@ -113,72 +177,117 @@ Validator memeriksa setiap input
         ↓
 Jika salah → tampil pesan error
 Jika benar → data dapat diproses
-4.3 Dropdown dan Checkbox
+```
+
+### 4.3 Dropdown dan Checkbox
+
 Pada form saya juga menggunakan dropdown untuk memilih jurusan.
 
+```dart
 DropdownButtonFormField<String>(
   ...
 )
+```
+
 Nilai pilihan disimpan pada:
 
+```dart
 String? _jurusan;
+```
+
+Pilihan pada Bagian B adalah `TI` (Teknik Informatika), `SI` (Sistem Informasi), dan `TE` (Teknik Elektro).
+
 Sementara checkbox digunakan untuk menyimpan persetujuan pengguna:
 
+```dart
 bool _setuju = false;
+```
+
 Tombol daftar hanya dapat digunakan ketika checkbox sudah dicentang:
 
+```dart
 onPressed: _setuju ? _kirim : null,
-Bagian ini menunjukkan bahwa input pada Flutter tidak terbatas pada teks. Dropdown dan checkbox juga dapat menyimpan nilai yang digunakan sebagai bagian dari state form.
+```
 
-5. Implementasi Input Dasar
-Pada Bagian A saya membuat halaman InputPage.
+Dari sini saya memahami bahwa widget input tidak hanya digunakan untuk menerima teks. Flutter juga menyediakan komponen input lain yang dapat menyimpan state sesuai kebutuhan.
+
+## 5. Bagian A — Input Dasar
+
+Pada Bagian A saya membuat halaman `InputPage` di `praktikum3/lib/bagian_A_B.dart`.
 
 Halaman ini menggunakan:
 
-StatefulWidget
-TextField
-TextEditingController
-setState
-ElevatedButton
+- `StatefulWidget`
+- `TextField`
+- `TextEditingController`
+- `setState`
+- `ElevatedButton`
+
 Input nama disimpan melalui controller:
 
+```dart
 final _controller = TextEditingController();
+```
+
 Ketika tombol Sapa ditekan, nilai input digunakan untuk mengubah teks sapaan:
 
+```dart
 setState(() {
   _salam = 'Halo, ${_controller.text}!';
 });
-Analisis
-Pada tahap ini digunakan state sederhana melalui variabel `_salam`. Ketika nilainya berubah, bagian tampilan yang bergantung pada variabel tersebut ikut diperbarui.
+```
 
-Karena state hanya digunakan di `InputPage`, `setState` masih cukup untuk menangani perubahan data.
+Judul AppBar halaman ini adalah `Input Dasar`.
 
-Hasil yang Diharapkan
+### Pemahaman saya
+
+Pada tahap ini saya mulai memahami konsep state sederhana. Variabel `_salam` dapat berubah dan perubahan tersebut memengaruhi tampilan.
+
+Karena perubahan hanya terjadi pada halaman `InputPage`, penggunaan `setState` masih cukup.
+
+### Hasil yang diharapkan
+
 Misalnya pengguna memasukkan:
 
-Habiburrahman
+```text
+Riski
+```
+
 kemudian menekan tombol Sapa, maka akan muncul:
 
-Halo, Habiburrahman!
-6. Implementasi Form dan Validasi
-Pada Bagian B saya membuat FormPage.
+```text
+Halo, Riski!
+```
+
+`InputPage` dan `FormPage` berada di file yang sama. Saat file `bagian_A_B.dart` dijalankan, `home` mengarah ke `FormPage`. `InputPage` tetap ada di file tersebut dan dapat dijadikan halaman awal dengan mengganti nilai `home`.
+
+## 6. Bagian B — Form dengan Validasi
+
+Pada Bagian B saya membuat `FormPage`, juga di `praktikum3/lib/bagian_A_B.dart`. Judul AppBar-nya adalah `Form Pendaftaran`.
 
 Form ini memiliki beberapa input:
 
-Nama lengkap
-Email
-Jurusan
-Persetujuan ketentuan
-Validasi nama
+- Nama lengkap
+- Email
+- Jurusan
+- Persetujuan ketentuan
+
+### Validasi nama
+
 Nama tidak boleh kosong:
 
+```dart
 validator: (v) =>
     (v == null || v.trim().isEmpty)
         ? 'Nama wajib diisi'
         : null,
-Validasi email
-Email diperiksa menggunakan karakter @:
+```
 
+### Validasi email
+
+Email diperiksa menggunakan karakter `@`:
+
+```dart
 validator: (v) {
   if (v == null || !v.contains('@')) {
     return 'Email tidak valid';
@@ -186,54 +295,84 @@ validator: (v) {
 
   return null;
 }
-Validasi jurusan
+```
+
+### Validasi jurusan
+
 Jurusan harus dipilih:
 
+```dart
 validator: (v) =>
     v == null ? 'Pilih jurusan' : null,
-Checkbox
+```
+
+### Checkbox
+
 Nilai checkbox disimpan pada:
 
+```dart
 bool _setuju = false;
-Tombol daftar dibuat aktif hanya jika _setuju bernilai true.
+```
 
-Hasil
+Tombol daftar dibuat aktif hanya jika `_setuju` bernilai `true`.
+
+### Hasil
+
 Jika data belum benar, Flutter menampilkan pesan validasi berwarna merah.
 
 Jika semua input valid dan checkbox sudah dicentang, data diproses dan muncul SnackBar.
 
-Contohnya:
+Contohnya, jika nama yang diisi `Riski` dan jurusan yang dipilih `TI`:
 
-Terdaftar: Habiburrahman (TI)
-Analisis
-Validasi dilakukan sebelum data diproses. Penggunaan `Form` dan `validator` membuat pemeriksaan setiap input lebih terstruktur dan mudah dikelola.
+```text
+Terdaftar: Riski (TI)
+```
 
-7. Analisis Kebutuhan State Management
+SnackBar tersebut disusun dari kode:
+
+```dart
+'Terdaftar: ${_nama.text} ($jurusan)'
+```
+
+### Pemahaman saya
+
+Pada bagian ini saya mulai memahami bahwa validasi sebaiknya dilakukan sebelum data diproses. Dengan menggunakan `Form` dan validator, pengecekan setiap input menjadi lebih terstruktur.
+
+## 7. Bagian C — Mengapa Membutuhkan State Management?
+
 Bagian C menjelaskan masalah yang mulai muncul ketika data digunakan oleh beberapa halaman.
 
 Contohnya pada aplikasi daftar tugas:
 
+```text
 Halaman Daftar Tugas
         ↕
      Data Tugas
         ↕
 Halaman Tambah Tugas
+```
+
 Halaman daftar menampilkan data, sedangkan halaman tambah digunakan untuk memasukkan data baru.
 
-Jika hanya mengandalkan `setState`, pembagian data menjadi lebih rumit ketika jumlah halaman bertambah karena data perlu diteruskan melalui constructor atau callback.
+Jika hanya menggunakan `setState`, data dapat menjadi sulit untuk dibagikan ketika jumlah halaman bertambah. Data bisa saja harus dikirim melalui constructor atau callback dari satu halaman ke halaman lain.
 
-Untuk mengatasi kebutuhan tersebut, digunakan satu objek state yang dapat diakses bersama oleh beberapa widget.
+Karena itu digunakan satu objek state yang dapat diakses oleh beberapa widget.
 
 Pada praktikum ini, solusi yang digunakan adalah:
 
+```text
 ChangeNotifier
       +
    Provider
-8. Implementasi Daftar Tugas dengan Provider
-Pada Bagian D saya membuat aplikasi sederhana Daftar Tugas.
+```
+
+## 8. Bagian D — Daftar Tugas dengan Provider
+
+Pada Bagian D saya membuat aplikasi sederhana Daftar Tugas di `praktikum3/lib/bagianD.dart`.
 
 Struktur dasarnya terdiri dari:
 
+```text
 Tugas
   ↓
 TugasModel
@@ -243,92 +382,154 @@ ChangeNotifierProvider
 TugasPage
   ↓
 TambahPage
-8.1 Model Tugas
+```
+
+### 8.1 Model Tugas
+
 Data tugas dibuat melalui class:
 
+```dart
 class Tugas {
   String judul;
   bool selesai;
 
   Tugas(this.judul, {this.selesai = false});
 }
+```
+
 Setiap tugas memiliki dua informasi utama:
 
-judul
-selesai
-8.2 TugasModel
-State aplikasi disimpan pada TugasModel:
+- `judul`
+- `selesai`
 
+### 8.2 TugasModel
+
+State aplikasi disimpan pada `TugasModel`:
+
+```dart
 class TugasModel extends ChangeNotifier {
   final List<Tugas> _items = [];
 }
-Model ini menangani beberapa operasi utama terhadap data tugas.
+```
 
-Menambahkan tugas
+Model ini memiliki beberapa fungsi.
+
+Menambahkan tugas:
+
+```dart
 void tambah(String judul) {
   _items.add(Tugas(judul));
   notifyListeners();
 }
-Mengubah status tugas
+```
+
+Mengubah status tugas:
+
+```dart
 void toggle(int index) {
   _items[index].selesai = !_items[index].selesai;
   notifyListeners();
 }
-Menghapus tugas
+```
+
+Menghapus tugas:
+
+```dart
 void hapus(int index) {
   _items.removeAt(index);
   notifyListeners();
 }
-`notifyListeners()` dipanggil setiap kali data berubah agar widget yang mendengarkan model dapat membangun ulang tampilannya.
+```
 
-9. ChangeNotifierProvider
-Agar TugasModel dapat digunakan oleh halaman lain, model diletakkan di atas widget yang membutuhkannya:
+`notifyListeners()` digunakan untuk memberi tahu widget yang sedang mendengarkan state bahwa data sudah berubah.
 
+Daftar yang dibaca halaman dibungkus supaya tidak diubah dari luar model:
+
+```dart
+List<Tugas> get items => List.unmodifiable(_items);
+```
+
+Jumlah tugas selesai dihitung dengan:
+
+```dart
+int get jumlahSelesai =>
+    _items.where((t) => t.selesai).length;
+```
+
+## 9. ChangeNotifierProvider
+
+Agar `TugasModel` dapat digunakan oleh halaman lain, model diletakkan di atas widget yang membutuhkannya:
+
+```dart
 ChangeNotifierProvider(
   create: (_) => TugasModel(),
   child: const MyApp(),
 )
-Dengan penempatan tersebut, `TugasPage` dan `TambahPage` menggunakan instance model yang sama.
+```
 
-Akibatnya, data yang ditambahkan dari halaman kedua dapat langsung tercermin pada halaman daftar tanpa pengiriman data manual antarhalaman.
+Dengan begitu, `TugasPage` dan `TambahPage` dapat mengakses model yang sama.
 
-10. context.watch dan context.read
-Dua penggunaan Provider yang saya terapkan adalah context.watch() dan context.read().
+Hal ini yang membuat data yang ditambahkan dari halaman kedua dapat langsung terlihat pada halaman daftar.
 
-context.watch()
+## 10. context.watch dan context.read
+
+Dua penggunaan Provider yang saya terapkan adalah `context.watch()` dan `context.read()`.
+
+### context.watch()
+
 Pada halaman daftar:
 
+```dart
 final model = context.watch<TugasModel>();
-`watch` digunakan ketika widget perlu bereaksi terhadap perubahan state.
+```
+
+`watch` digunakan ketika widget perlu mengikuti perubahan data.
 
 Misalnya jumlah tugas berubah, tampilan AppBar juga perlu diperbarui.
 
+```dart
 title: Text(
   'Tugas (${model.jumlahSelesai}/${model.items.length})',
 ),
-context.read()
+```
+
+### context.read()
+
 Untuk menjalankan aksi, saya menggunakan:
 
+```dart
 context.read<TugasModel>().toggle(i);
+```
+
 dan:
 
+```dart
 context.read<TugasModel>().hapus(i);
-`read` digunakan ketika widget hanya perlu menjalankan aksi pada model tanpa ikut mendengarkan perubahan state.
+```
 
-Analisis
-Secara sederhana, perbedaannya dapat diringkas sebagai berikut:
+`read` digunakan untuk mengambil model tanpa membuat widget tersebut ikut mendengarkan perubahan state.
 
+### Pemahaman saya
+
+Cara sederhananya saya pahami seperti ini:
+
+```text
 watch → saya perlu mengetahui perubahan data
 
 read  → saya hanya perlu menjalankan aksi terhadap data
-11. Halaman Tambah Tugas
-Halaman TambahPage digunakan untuk memasukkan tugas baru.
+```
 
-Input menggunakan:
+## 11. Halaman Tambah Tugas
 
+Pada Bagian D, halaman `TambahPage` digunakan untuk memasukkan tugas baru. Input masih memakai `TextField`.
+
+```dart
 final _controller = TextEditingController();
+```
+
 Ketika tombol Simpan ditekan:
 
+```dart
 final judul = _controller.text.trim();
 
 if (judul.isEmpty) return;
@@ -336,8 +537,11 @@ if (judul.isEmpty) return;
 context.read<TugasModel>().tambah(judul);
 
 Navigator.pop(context);
+```
+
 Alurnya:
 
+```text
 User mengetik tugas
         ↓
 Tombol Simpan
@@ -353,17 +557,29 @@ notifyListeners()
 Kembali ke halaman daftar
         ↓
 Daftar diperbarui
-12. Pengembangan Fitur melalui Latihan
-Setelah aplikasi daftar tugas berjalan, fitur kemudian dikembangkan secara bertahap melalui latihan mandiri.
+```
 
-Latihan 1 — Validasi Minimal 3 Karakter
-TambahPage diubah dari TextField menjadi TextFormField.
+Validasi minimal 3 karakter, penghapusan tugas selesai, SnackBar, dan empty state ditambahkan pada latihan, bukan pada file Bagian D.
+
+## 12. Latihan Mandiri
+
+Setelah aplikasi daftar tugas dari Bagian D berhasil dibuat, saya melanjutkan latihan secara bertahap. Setiap latihan menyimpan hasil tahap sebelumnya, lalu menambahkan satu fitur.
+
+### Latihan 1 — Validasi Minimal 3 Karakter
+
+File: `praktikum3/lib/latihan1.dart`.
+
+`TambahPage` diubah dari `TextField` menjadi `TextFormField`.
 
 Saya menambahkan:
 
+```dart
 final _formKey = GlobalKey<FormState>();
+```
+
 Kemudian validator:
 
+```dart
 validator: (v) {
   if (v == null || v.trim().length < 3) {
     return 'Judul minimal 3 karakter';
@@ -371,40 +587,61 @@ validator: (v) {
 
   return null;
 }
-Dengan validasi tersebut, judul tugas yang panjangnya kurang dari tiga karakter akan ditolak.
+```
 
-Latihan 2 — Menghapus Semua Tugas yang Sudah Selesai
+Dengan demikian, tugas yang panjangnya kurang dari 3 karakter tidak dapat disimpan. Penyimpanan hanya jalan jika `_formKey.currentState!.validate()` berhasil.
+
+### Latihan 2 — Menghapus Semua Tugas yang Sudah Selesai
+
+File: `praktikum3/lib/latihan2.dart`.
+
 Saya menambahkan method:
 
+```dart
 void hapusSelesai() {
   _items.removeWhere((t) => t.selesai);
   notifyListeners();
 }
+```
+
 Kemudian menambahkan tombol pada AppBar:
 
+```dart
 IconButton(
   icon: const Icon(Icons.delete_sweep),
   onPressed: () {
     context.read<TugasModel>().hapusSelesai();
   },
 )
-Fungsi ini memungkinkan seluruh tugas yang sudah selesai dihapus dalam satu aksi.
+```
 
-Latihan 3 — SnackBar
+Jadi tugas yang sudah dicentang dapat dihapus sekaligus. Validasi 3 karakter dari Latihan 1 tetap ada.
+
+### Latihan 3 — SnackBar
+
+File: `praktikum3/lib/latihan3.dart`.
+
 Setelah tugas berhasil ditambahkan, saya menampilkan:
 
+```dart
 ScaffoldMessenger.of(context).showSnackBar(
   const SnackBar(
     content: Text('Tugas ditambahkan'),
   ),
 );
-SnackBar digunakan sebagai umpan balik bahwa proses penambahan data berhasil.
+```
 
-Latihan 4 — Empty State
-Jika belum ada tugas, sebelumnya ListView tidak menampilkan apa-apa.
+SnackBar dipanggil sebelum `Navigator.pop(context)`, sehingga pesan tetap muncul saat kembali ke halaman daftar. Tujuannya supaya pengguna mendapat informasi bahwa data berhasil diproses.
+
+### Latihan 4 — Empty State
+
+File: `praktikum3/lib/latihan4.dart`.
+
+Jika belum ada tugas, sebelumnya `ListView` tidak menampilkan apa-apa.
 
 Saya kemudian membuat kondisi:
 
+```dart
 body: model.items.isEmpty
     ? const Center(
         child: Text('Belum ada tugas'),
@@ -412,28 +649,37 @@ body: model.items.isEmpty
     : ListView.builder(
         ...
       ),
+```
+
 Hasilnya ketika daftar kosong akan muncul:
 
+```text
 Belum ada tugas
-Kondisi kosong menjadi lebih informatif karena pengguna mendapat pesan yang jelas ketika belum ada data.
+```
 
-13. Implementasi Tugas Utama — Daftar Belanja
-Konsep yang telah digunakan pada latihan kemudian diterapkan pada tugas utama berupa aplikasi Daftar Belanja.
+Ini membuat kondisi kosong lebih jelas bagi pengguna. Fitur latihan 1 sampai 3 tetap ada di file ini.
+
+## 13. Tugas Utama — Aplikasi Daftar Belanja
+
+Setelah menyelesaikan latihan, konsep yang sama diterapkan pada tugas utama di `tugas3/lib/main.dart`.
 
 Tugas pada modul meminta aplikasi Daftar Belanja dengan:
 
-Nama barang wajib diisi.
-Jumlah wajib diisi.
-Jumlah harus berupa angka lebih dari 0.
-Kategori menggunakan dropdown.
-Data dapat ditandai sebagai sudah dibeli.
-Data dapat dihapus.
-State menggunakan satu ChangeNotifier.
-State dibagikan menggunakan Provider.
-AppBar menampilkan jumlah barang yang belum dibeli.
-14. Model Barang
-Saya membuat class baru bernama Barang:
+- Nama barang wajib diisi.
+- Jumlah wajib diisi.
+- Jumlah harus berupa angka lebih dari 0.
+- Kategori menggunakan dropdown.
+- Data dapat ditandai sebagai sudah dibeli.
+- Data dapat dihapus.
+- State menggunakan satu `ChangeNotifier`.
+- State dibagikan menggunakan Provider.
+- AppBar menampilkan jumlah barang yang belum dibeli.
 
+## 14. Model Barang
+
+Saya membuat class baru bernama `Barang`:
+
+```dart
 class Barang {
   String nama;
   int jumlah;
@@ -447,31 +693,41 @@ class Barang {
     this.sudahDibeli = false,
   });
 }
-Setiap objek barang menyimpan empat informasi utama:
+```
 
-Data	Fungsi
-nama	Menyimpan nama barang
-jumlah	Menyimpan jumlah barang
-kategori	Menyimpan kategori
-sudahDibeli	Menyimpan status pembelian
-15. BelanjaModel
+Setiap barang mempunyai empat data:
+
+| Data | Fungsi |
+| --- | --- |
+| `nama` | Menyimpan nama barang |
+| `jumlah` | Menyimpan jumlah barang |
+| `kategori` | Menyimpan kategori |
+| `sudahDibeli` | Menyimpan status pembelian |
+
+## 15. BelanjaModel
+
 State untuk aplikasi Daftar Belanja disimpan pada:
 
+```dart
 class BelanjaModel extends ChangeNotifier {
   final List<Barang> _items = [];
 }
+```
+
 Jumlah barang yang belum dibeli dihitung melalui getter:
 
+```dart
 int get jumlahBelumDibeli =>
     _items.where((barang) => !barang.sudahDibeli).length;
-Dengan getter tersebut, hanya barang dengan kondisi berikut yang dihitung:
+```
 
-sudahDibeli == false
-yang dihitung.
+Artinya hanya barang yang memiliki `sudahDibeli == false` yang dihitung.
 
-15.1 Menambahkan Barang
+### 15.1 Menambahkan Barang
+
 Method yang digunakan:
 
+```dart
 void tambah(String nama, int jumlah, String kategori) {
   _items.add(
     Barang(
@@ -483,64 +739,101 @@ void tambah(String nama, int jumlah, String kategori) {
 
   notifyListeners();
 }
-Setelah data ditambahkan, notifyListeners() dipanggil supaya halaman daftar mengetahui bahwa data sudah berubah.
+```
 
-15.2 Mengubah Status Barang
+Setelah data ditambahkan, `notifyListeners()` dipanggil supaya halaman daftar mengetahui bahwa data sudah berubah.
+
+### 15.2 Mengubah Status Barang
+
 Checkbox menggunakan method:
 
+```dart
 void toggle(int index) {
   _items[index].sudahDibeli =
       !_items[index].sudahDibeli;
 
   notifyListeners();
 }
-Method ini membalik status pembelian: barang yang belum dibeli menjadi sudah dibeli, dan sebaliknya.
+```
 
-15.3 Menghapus Barang
+Jika sebelumnya belum dibeli, maka menjadi sudah dibeli. Begitu juga sebaliknya.
+
+### 15.3 Menghapus Barang
+
 Method hapus:
 
+```dart
 void hapus(int index) {
   _items.removeAt(index);
   notifyListeners();
 }
-16. Halaman Daftar Belanja
-Halaman utama menggunakan:
+```
 
+## 16. Halaman Daftar Belanja
+
+Halaman utama menggunakan `DaftarBelanjaPage`:
+
+```dart
 final model = context.watch<BelanjaModel>();
+```
+
 Kemudian jumlah barang yang belum dibeli ditampilkan di AppBar:
 
+```dart
 title: Text(
   'Belum Dibeli (${model.jumlahBelumDibeli})',
 ),
-Daftar barang ditampilkan menggunakan:
+```
 
-ListView.builder
+Daftar barang ditampilkan menggunakan `ListView.builder`.
+
 Setiap barang mempunyai:
 
-Checkbox
-Nama barang
-Jumlah
-Kategori
-Tombol hapus
+- Checkbox
+- Nama barang
+- Jumlah
+- Kategori
+- Tombol hapus
+
 Contoh informasi yang ditampilkan:
 
+```text
 Beras
 Jumlah: 2 | Kategori: Makanan
+```
+
+Teks tersebut berasal dari:
+
+```dart
+'Jumlah: ${barang.jumlah} | Kategori: ${barang.kategori}'
+```
+
 Jika barang dicentang, nama barang akan dicoret menggunakan:
 
+```dart
 decoration: barang.sudahDibeli
     ? TextDecoration.lineThrough
     : null,
-17. Halaman Tambah Barang
+```
+
+Tombol tambah memakai `FloatingActionButton` yang membuka `TambahBarangPage`.
+
+## 17. Halaman Tambah Barang
+
 Form tambah barang menggunakan:
 
+```dart
 Form(
   key: _formKey,
   ...
 )
-Ada tiga input utama:
+```
 
-Nama Barang
+Ada tiga input utama.
+
+Nama Barang:
+
+```dart
 validator: (v) {
   if (v == null || v.trim().isEmpty) {
     return 'Nama barang wajib diisi';
@@ -548,43 +841,71 @@ validator: (v) {
 
   return null;
 }
-Jumlah
-Jumlah diperiksa menggunakan int.tryParse():
+```
+
+Jumlah diperiksa menggunakan `int.tryParse()`:
+
+```dart
+if (v == null || v.trim().isEmpty) {
+  return 'Jumlah wajib diisi';
+}
 
 final jumlah = int.tryParse(v);
 
 if (jumlah == null || jumlah <= 0) {
   return 'Jumlah harus angka lebih dari 0';
 }
-`int.tryParse()` digunakan agar input yang bukan angka dapat ditangani tanpa menimbulkan error saat proses konversi.
+```
 
-Kategori
-Kategori menggunakan:
+Saya menggunakan `tryParse()` supaya input yang bukan angka tidak langsung menyebabkan error saat proses konversi.
 
-DropdownButtonFormField<String>
+Kategori menggunakan `DropdownButtonFormField<String>`.
+
 Pilihan yang saya buat:
 
-Makanan
-Minuman
-Lainnya
-Kategori wajib dipilih sebelum data dapat disimpan.
+- Makanan
+- Minuman
+- Lainnya
 
-18. Proses Penyimpanan Data
+Kategori wajib dipilih sebelum data dapat disimpan:
+
+```dart
+validator: (v) {
+  if (v == null) {
+    return 'Kategori wajib dipilih';
+  }
+
+  return null;
+}
+```
+
+## 18. Proses Penyimpanan Data
+
 Ketika tombol Simpan ditekan, form terlebih dahulu divalidasi:
 
+```dart
 if (_formKey.currentState!.validate()) {
-Jika valid, data dikirim ke BelanjaModel:
+```
 
+Jika valid, data dikirim ke `BelanjaModel`:
+
+```dart
 context.read<BelanjaModel>().tambah(
   _nama.text.trim(),
   int.parse(_jumlah.text),
   _kategori!,
 );
+```
+
 Setelah data berhasil dimasukkan, halaman kembali ke halaman daftar:
 
+```dart
 Navigator.pop(context);
+```
+
 Alur lengkapnya:
 
+```text
 Form Tambah Barang
         ↓
 User mengisi nama
@@ -610,9 +931,13 @@ Error       BelanjaModel
         Kembali ke daftar
                ↓
         Data langsung tampil
-19. Urutan Proses Pengerjaan
-Urutan pengerjaan praktikum secara keseluruhan dapat digambarkan sebagai berikut:
+```
 
+## 19. Alur Keseluruhan Praktikum
+
+Secara keseluruhan, proses pengerjaan saya dapat digambarkan seperti berikut:
+
+```text
 Mulai
   ↓
 Mempelajari TextField
@@ -656,32 +981,44 @@ Menghubungkan Form dengan Provider
 Menguji tambah, centang, dan hapus
   ↓
 Selesai
-20. Perbandingan Penggunaan setState dan Provider
-`setState` dan `Provider` memiliki fungsi yang berbeda dan tidak selalu saling menggantikan.
+```
 
-setState	Provider
-Cocok untuk state lokal	Cocok untuk state yang digunakan beberapa widget/halaman
-Sederhana digunakan	Memerlukan model dan provider
-State berada pada widget	State dapat dipusatkan pada model
-Contoh: checkbox lokal	Contoh: daftar tugas dan daftar belanja
-Rebuild dikelola oleh widget tersebut	Widget yang melakukan watch mengikuti perubahan model
-Untuk state sederhana yang hanya digunakan pada satu halaman, `setState` masih memadai. Ketika data perlu dipakai oleh beberapa halaman, `Provider` menjadi pilihan yang lebih tepat.
+## 20. Perbandingan setState dan Provider
 
-21. Hasil Akhir Implementasi
-Setelah seluruh tahap selesai, implementasi menghasilkan beberapa fungsi utama yang dapat diuji secara langsung.
+Dari praktikum ini saya memahami bahwa `setState` dan Provider dipakai sesuai kebutuhan datanya.
 
-Bagian A
-Input nama melalui TextField dan menampilkan sapaan setelah tombol ditekan.
+| setState | Provider |
+| --- | --- |
+| Cocok untuk state lokal | Cocok untuk state yang digunakan beberapa widget/halaman |
+| Sederhana digunakan | Memerlukan model dan provider |
+| State berada pada widget | State dapat dipusatkan pada model |
+| Contoh: checkbox lokal dan sapaan di InputPage | Contoh: daftar tugas dan daftar belanja |
+| Rebuild dikelola oleh widget tersebut | Widget yang melakukan watch mengikuti perubahan model |
 
+Jadi, untuk kasus sederhana seperti input dasar, `setState` masih cukup. Ketika data perlu digunakan oleh beberapa halaman, Provider menjadi lebih masuk akal untuk digunakan.
+
+## 21. Hasil Implementasi
+
+Setelah seluruh kode dibuat, aplikasi yang dihasilkan memiliki beberapa fungsi utama.
+
+### Bagian A
+
+Input nama melalui `TextField` dan menampilkan sapaan setelah tombol ditekan.
+
+```text
 Nama
 [_____________________]
 
 [Sapa]
 
-Halo, Habiburrahman!
-Bagian B
+Halo, Riski!
+```
+
+### Bagian B
+
 Form pendaftaran dengan:
 
+```text
 Nama lengkap
 [_____________________]
 
@@ -694,94 +1031,130 @@ Jurusan
 ☐ Saya menyetujui ketentuan
 
 [Daftar]
+```
+
 Jika data tidak sesuai, pesan validasi ditampilkan pada field yang bermasalah.
 
-Daftar Tugas
+### Daftar Tugas
+
 Aplikasi dapat:
 
-Menambah tugas.
-Menandai tugas selesai.
-Mencoret tugas selesai.
-Menghapus tugas.
-Menghapus seluruh tugas yang selesai.
-Menampilkan jumlah tugas.
-Menampilkan pesan ketika daftar kosong.
-Menampilkan SnackBar setelah tugas ditambahkan.
-Daftar Belanja
+- Menambah tugas.
+- Menandai tugas selesai.
+- Mencoret tugas selesai.
+- Menghapus tugas.
+- Menghapus seluruh tugas yang selesai (mulai Latihan 2).
+- Menampilkan jumlah tugas pada AppBar.
+- Menampilkan pesan ketika daftar kosong (Latihan 4).
+- Menampilkan SnackBar setelah tugas ditambahkan (mulai Latihan 3).
+
+### Daftar Belanja
+
 Aplikasi akhir dapat:
 
-Menambahkan barang.
-Memvalidasi nama barang.
-Memvalidasi jumlah.
-Memvalidasi kategori.
-Menampilkan daftar barang.
-Menandai barang sebagai sudah dibeli.
-Mencoret barang yang sudah dibeli.
-Menghapus barang.
-Menampilkan jumlah barang yang belum dibeli.
-22. Skenario Pengujian
+- Menambahkan barang.
+- Memvalidasi nama barang.
+- Memvalidasi jumlah.
+- Memvalidasi kategori.
+- Menampilkan daftar barang.
+- Menandai barang sebagai sudah dibeli.
+- Mencoret barang yang sudah dibeli.
+- Menghapus barang.
+- Menampilkan jumlah barang yang belum dibeli.
+
+## 22. Pengujian yang Dilakukan
+
 Beberapa kondisi yang perlu diuji dari aplikasi:
 
-Pengujian	Hasil yang Diharapkan
-Nama barang dikosongkan	Muncul Nama barang wajib diisi
-Jumlah dikosongkan	Muncul Jumlah wajib diisi
-Jumlah diisi teks	Muncul Jumlah harus angka lebih dari 0
-Jumlah diisi 0	Ditolak
-Jumlah diisi angka negatif	Ditolak
-Kategori tidak dipilih	Muncul pesan validasi
-Data valid	Barang berhasil ditambahkan
-Barang dicentang	Status berubah menjadi sudah dibeli
-Barang sudah dibeli	Nama barang dicoret
-Barang dihapus	Barang hilang dari daftar
-Semua barang belum dibeli	Jumlah pada AppBar mengikuti jumlah barang
-Daftar tugas kosong	Muncul Belum ada tugas
-23. Analisis Teknis
-Kenapa menggunakan List.unmodifiable()?
+| Pengujian | Hasil yang diharapkan |
+| --- | --- |
+| Nama barang dikosongkan | Muncul `Nama barang wajib diisi` |
+| Jumlah dikosongkan | Muncul `Jumlah wajib diisi` |
+| Jumlah diisi teks | Muncul `Jumlah harus angka lebih dari 0` |
+| Jumlah diisi 0 | Ditolak |
+| Jumlah diisi angka negatif | Ditolak |
+| Kategori tidak dipilih | Muncul `Kategori wajib dipilih` |
+| Data valid | Barang berhasil ditambahkan |
+| Barang dicentang | Status berubah menjadi sudah dibeli |
+| Barang sudah dibeli | Nama barang dicoret |
+| Barang dihapus | Barang hilang dari daftar |
+| Semua barang belum dibeli | Jumlah pada AppBar mengikuti jumlah barang |
+| Daftar tugas kosong | Muncul `Belum ada tugas` |
+
+## 23. Pembahasan Teknis
+
+### Kenapa menggunakan List.unmodifiable()?
+
 Pada model digunakan:
 
+```dart
 List<Barang> get items => List.unmodifiable(_items);
-Data utama tetap dikelola oleh model, sedangkan halaman hanya menerima salinan list yang tidak dapat diubah secara langsung.
+```
 
-Dengan pendekatan tersebut, perubahan data tetap dilakukan melalui method yang disediakan oleh model, seperti:
+Pola yang sama juga ada pada `TugasModel`:
 
-tambah()
-toggle()
-hapus()
-Kenapa setiap perubahan memanggil notifyListeners()?
-Provider perlu menerima pemberitahuan setiap kali state berubah.
+```dart
+List<Tugas> get items => List.unmodifiable(_items);
+```
+
+Data asli tetap dikelola oleh model. Halaman hanya mendapatkan versi list yang tidak dapat dimodifikasi secara langsung.
+
+Dengan cara ini, perubahan data tetap dilakukan melalui method yang disediakan model, seperti:
+
+- `tambah()`
+- `toggle()`
+- `hapus()`
+
+### Kenapa setiap perubahan memanggil notifyListeners()?
+
+Provider perlu mengetahui bahwa state telah berubah.
 
 Contohnya:
 
+```dart
 void hapus(int index) {
   _items.removeAt(index);
   notifyListeners();
 }
-Jika data berubah tanpa `notifyListeners()`, widget yang menggunakan `context.watch()` tidak akan memperoleh pemberitahuan untuk memperbarui tampilannya.
+```
 
-Kenapa context.watch() digunakan di build()?
-Pada halaman daftar, tampilan perlu selalu mengikuti perubahan state yang terjadi pada model.
+Jika data diubah tetapi `notifyListeners()` tidak dipanggil, widget yang menggunakan `context.watch()` tidak mendapat pemberitahuan untuk membangun ulang tampilan.
+
+### Kenapa context.watch() digunakan di build()?
+
+Pada halaman daftar, data harus selalu mengikuti perubahan state.
 
 Contohnya:
 
+```dart
 final model = context.watch<BelanjaModel>();
-Ketika jumlah atau isi _items berubah, halaman akan mendapatkan perubahan tersebut dan tampilan dapat diperbarui.
+```
 
-Kenapa context.read() digunakan pada tombol?
-Pada tombol aksi, kebutuhan utamanya hanya menjalankan method pada model.
+Ketika jumlah atau isi `_items` berubah, halaman akan mendapatkan perubahan tersebut dan tampilan dapat diperbarui.
+
+### Kenapa context.read() digunakan pada tombol?
+
+Pada tombol, kebutuhan utamanya adalah menjalankan method pada model.
 
 Contohnya:
 
+```dart
 context.read<BelanjaModel>().hapus(index);
-Tombol tidak perlu ikut mendengarkan perubahan state; tombol cukup mengambil model lalu menjalankan method `hapus()`.
+```
 
-Kenapa menggunakan ListView pada form?
-Form dapat memiliki beberapa input, dan pada layar kecil kemunculan keyboard berpotensi menutup bagian bawah halaman.
+Tombol tidak perlu menjadi pendengar perubahan state. Ia hanya perlu mengambil model kemudian menjalankan method `hapus()`.
 
-Dengan `ListView`, seluruh isi form tetap dapat digulir sehingga field yang tertutup keyboard masih dapat diakses.
+### Kenapa menggunakan ListView pada form?
 
-24. Gambaran Struktur Aplikasi
+Form dapat berisi beberapa input dan pada layar yang lebih kecil keyboard dapat menyebabkan bagian bawah halaman tertutup.
+
+Dengan `ListView`, isi form dapat digulir sehingga input tetap dapat diakses. `FormPage` dan `TambahBarangPage` memakai `ListView`. Halaman tambah tugas pada latihan memakai `Column` karena inputnya hanya satu field.
+
+## 24. Struktur Konsep Aplikasi
+
 Struktur konsep aplikasi akhir dapat dipahami seperti ini:
 
+```text
                    ┌─────────────────────┐
                    │  BelanjaModel       │
                    │  ChangeNotifier     │
@@ -799,58 +1172,63 @@ Struktur konsep aplikasi akhir dapat dipahami seperti ini:
    │                  │          │ Form + Validator │
    └──────────────────┘          └──────────────────┘
               │                             │
-              │                             │
               └──────────── Data ───────────┘
-Dengan struktur tersebut, kedua halaman tidak perlu saling mengirim data melalui constructor. Keduanya cukup mengakses `BelanjaModel` yang sama melalui `Provider`.
+```
 
-25. Kesimpulan Akhir
-Praktikum Pertemuan 3 menunjukkan bahwa pengembangan Flutter tidak hanya berfokus pada tampilan, tetapi juga pada bagaimana input pengguna divalidasi dan dikelola sebagai state.
+Dengan struktur tersebut, kedua halaman tidak perlu membawa data satu sama lain melalui constructor. Keduanya cukup mengakses `BelanjaModel` yang sama melalui Provider.
 
-Tahap awal menggunakan `TextField` dan `TextEditingController` untuk mengambil input. Setelah itu digunakan `Form` dan `validator` agar data dapat diperiksa sebelum diproses.
+## 25. Kesimpulan
 
-`setState` masih sesuai untuk state sederhana pada satu halaman. Ketika data mulai digunakan lintas halaman, state management diperlukan agar pengelolaan data tetap terstruktur.
+Dari praktikum Pertemuan 3 ini saya mendapatkan pemahaman bahwa pembuatan aplikasi Flutter tidak hanya berkaitan dengan membuat tampilan. Data yang masuk dari pengguna juga harus dikelola dengan baik.
 
-Melalui `ChangeNotifier` dan `Provider`, data dapat dipusatkan pada satu model dan digunakan oleh beberapa halaman. `context.watch()` digunakan untuk mengikuti perubahan data, sedangkan `context.read()` digunakan untuk menjalankan aksi tanpa berlangganan pada perubahan.
+Pada awal praktikum saya menggunakan `TextField` dan `TextEditingController` untuk mengambil input. Setelah itu saya menggunakan `Form` dan validator supaya input dapat diperiksa sebelum diproses.
 
-Seluruh konsep tersebut kemudian diterapkan pada aplikasi Daftar Belanja yang memiliki form tambah barang dengan validasi, daftar barang, status pembelian, fungsi hapus, dan jumlah barang yang belum dibeli pada `AppBar`.
+Saya juga memahami bahwa `setState` masih cocok untuk state yang sederhana dan berada dalam satu halaman. Ketika data mulai digunakan oleh beberapa halaman, state management dibutuhkan supaya pengelolaan data tidak menjadi terlalu rumit.
 
-Pengerjaan secara bertahap membuat hubungan antar-konsep lebih mudah dipahami. Fitur pada aplikasi daftar tugas dikembangkan satu per satu, lalu pola yang sama diterapkan kembali pada aplikasi Daftar Belanja.
+Melalui `ChangeNotifier` dan `Provider`, data dapat ditempatkan pada satu model dan digunakan oleh beberapa halaman. `context.watch()` digunakan ketika widget perlu mengikuti perubahan data, sedangkan `context.read()` digunakan ketika hanya perlu menjalankan suatu aksi.
 
-26. Ringkasan Capaian
- Memahami TextField
- Menggunakan TextEditingController
- Melakukan dispose() pada controller
- Membuat Form
- Menggunakan TextFormField
- Membuat validasi input
- Menggunakan dropdown
- Menggunakan checkbox
- Memahami setState
- Memahami ChangeNotifier
- Memasang Provider
- Menggunakan context.watch()
- Menggunakan context.read()
- Membuat aplikasi Daftar Tugas
- Menambahkan validasi minimal 3 karakter
- Menambahkan fitur hapus tugas selesai
- Menambahkan SnackBar
- Menambahkan empty state
- Membuat aplikasi Daftar Belanja
- Membuat validasi nama barang
- Membuat validasi jumlah
- Membuat validasi kategori
- Menggunakan ChangeNotifier untuk state Daftar Belanja
- Menggunakan Provider
- Menambahkan fitur centang barang
- Menambahkan fitur hapus barang
- Menampilkan jumlah barang yang belum dibeli
-Referensi Modul
+Pada akhirnya konsep tersebut saya terapkan pada aplikasi Daftar Belanja. Aplikasi tersebut memiliki form tambah barang dengan validasi, daftar barang, status sudah dibeli, fitur hapus, serta jumlah barang yang belum dibeli pada AppBar.
+
+Menurut saya, bagian yang paling membantu dari praktikum ini adalah proses pengerjaan secara bertahap. Fitur pada aplikasi daftar tugas ditambahkan satu per satu melalui latihan, kemudian konsep yang sama digunakan untuk menyelesaikan aplikasi Daftar Belanja.
+
+## 26. Checklist Penyelesaian
+
+- [x] Memahami TextField
+- [x] Menggunakan TextEditingController
+- [x] Melakukan dispose() pada controller
+- [x] Membuat Form
+- [x] Menggunakan TextFormField
+- [x] Membuat validasi input
+- [x] Menggunakan dropdown
+- [x] Menggunakan checkbox
+- [x] Memahami setState
+- [x] Memahami ChangeNotifier
+- [x] Memasang Provider
+- [x] Menggunakan context.watch()
+- [x] Menggunakan context.read()
+- [x] Membuat aplikasi Daftar Tugas
+- [x] Menambahkan validasi minimal 3 karakter
+- [x] Menambahkan fitur hapus tugas selesai
+- [x] Menambahkan SnackBar
+- [x] Menambahkan empty state
+- [x] Membuat aplikasi Daftar Belanja
+- [x] Membuat validasi nama barang
+- [x] Membuat validasi jumlah
+- [x] Membuat validasi kategori
+- [x] Menggunakan ChangeNotifier untuk state Daftar Belanja
+- [x] Menggunakan Provider
+- [x] Menambahkan fitur centang barang
+- [x] Menambahkan fitur hapus barang
+- [x] Menampilkan jumlah barang yang belum dibeli
+
+## Referensi Modul
+
 Materi utama README ini disusun berdasarkan:
 
 Modul Praktikum Flutter Fundamental — Pertemuan 3: Form Input dan State Management
 
 Referensi yang tercantum pada modul:
 
-Flutter — Forms: docs.flutter.dev/cookbook/forms
-Flutter — State Management: docs.flutter.dev/data-and-backend/state-mgmt
-Provider Package: pub.dev/packages/provider
+- Flutter — Forms: https://docs.flutter.dev/cookbook/forms
+- Flutter — State Management: https://docs.flutter.dev/data-and-backend/state-mgmt
+- Provider Package: https://pub.dev/packages/provider
