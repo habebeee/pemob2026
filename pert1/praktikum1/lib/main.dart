@@ -30,7 +30,13 @@ class _CounterPageState extends State<CounterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Hello Flutter'),
+        backgroundColor: Colors.white,
+        title: const Text(
+          'Hello Flutter',
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
       ),
       body: Center(
         child: Column(
@@ -43,13 +49,24 @@ class _CounterPageState extends State<CounterPage> {
             ),
             const SizedBox(height: 16),
             const Text(
-              'Halo, nama saya [Habiburrahman]!',
-              style: TextStyle(fontSize: 24),
+              'Halo, nama saya Habiburrahman!',
+              style: TextStyle(
+                fontSize: 24,
+                color: Colors.black,
+              ),
             ),
-            const Text('NIM: [20240801149]'),
+            const Text(
+              'NIM: 20240801149',
+              style: TextStyle(
+                color: Colors.black,
+              ),
+            ),
             Text(
               '$_count',
-              style: const TextStyle(fontSize: 48),
+              style: const TextStyle(
+                fontSize: 48,
+                color: Colors.black,
+              ),
             ),
           ],
         ),
